@@ -1,0 +1,60 @@
+import java.util.Arrays;
+import java.util.Random;
+
+class Hello {
+	public static void main(String[] args){
+			Random random = new Random();
+			long[] e = new long[13];
+			double[] x = new double[17];
+			int index = 0;
+			for (int i=0; i<=12;i++){
+				e[index]=16-i;
+				index++;
+			}
+			for (int i=0;i<=16;i++){
+				x[i]=random.nextDouble(-2.0,Math.nextUp(3.0d));
+			}
+			/*System.out.println(Arrays.toString(e));
+			System.out.println(Arrays.toString(x));*/
+			double[][] h = new double[13][17];
+			for(int i=0;i<=12; i++){
+				for (int j=0; j<=16;j++){
+					h[i][j] = actions(e[i],x[j]);
+					}
+				}
+			out(h);
+			//System.out.println(Arrays.deepToString(h));
+
+	}
+
+	static double actions(long e, double x){
+		long[] prom = {4,7,9,10,14,16};
+		double x1 = x;
+			if (e==8){
+				double a1=0,a2=0;
+				a1 =Math.pow(((1-x1)/x1),x1);
+				a2 = Math.sin(a1);
+				return Math.cbrt(a2);
+				}
+			else if(Arrays.stream(prom).anyMatch(p->p==e)){
+				double a1=0,a2=0;
+				a1 = 1-Math.log(Math.abs(x1));
+				a2= a1/2;
+				return Math.pow(Math.E,a2);
+				}
+			else{
+				double a1=0,a2=0;
+				a1=Math.pow((2.0/3.0)/(Math.tan(x1)-0.5),3);
+				a2=Math.cbrt(a1);				
+				return Math.cos(a2);
+				}
+	}
+	static void out(double h[][]){
+		for(int i=0; i<=12;i++){
+			for(int j=0; j<=16;j++){
+				System.out.printf("%.4f ", h[i][j]);
+				}
+			System.out.println();	
+			}
+	}
+}
